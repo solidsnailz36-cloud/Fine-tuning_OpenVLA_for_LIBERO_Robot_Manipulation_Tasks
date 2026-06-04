@@ -1,4 +1,4 @@
-# OpenVLA / LIBERO Project
+#  Fine-tuning OpenVLA for LIBERO Robot Manipulation Tasks
 
 This repository contains code and configuration files for experiments based on **OpenVLA** and **LIBERO**.  
 The project focuses on vision-language-action modeling, robot manipulation tasks, and evaluation in simulated benchmark environments.
