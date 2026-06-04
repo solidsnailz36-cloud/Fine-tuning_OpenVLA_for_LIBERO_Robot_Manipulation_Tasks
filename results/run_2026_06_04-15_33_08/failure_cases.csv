@@ -1,0 +1,28 @@
+checkpoint,task_suite,task_id,task_description,episode_idx,failure_type,num_steps,mean_action_norm,max_action_norm
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,0,pick up the black bowl between the plate and the ramekin and place it on the plate,0,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,0,pick up the black bowl between the plate and the ramekin and place it on the plate,1,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,0,pick up the black bowl between the plate and the ramekin and place it on the plate,2,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,1,pick up the black bowl next to the ramekin and place it on the plate,0,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,1,pick up the black bowl next to the ramekin and place it on the plate,1,place_failure,220,0.428765,1.181766
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,1,pick up the black bowl next to the ramekin and place it on the plate,2,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,2,pick up the black bowl from table center and place it on the plate,0,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,2,pick up the black bowl from table center and place it on the plate,1,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,2,pick up the black bowl from table center and place it on the plate,2,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,3,pick up the black bowl on the cookie box and place it on the plate,0,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,3,pick up the black bowl on the cookie box and place it on the plate,1,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,4,pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate,1,place_failure,220,0.413945,1.069382
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,4,pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate,2,place_failure,220,0.789494,1.207787
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,5,pick up the black bowl on the ramekin and place it on the plate,0,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,5,pick up the black bowl on the ramekin and place it on the plate,1,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,5,pick up the black bowl on the ramekin and place it on the plate,2,place_failure,220,0.291462,1.195442
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,6,pick up the black bowl next to the cookie box and place it on the plate,0,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,6,pick up the black bowl next to the cookie box and place it on the plate,1,timeout_after_late_start,220,0.370487,1.198302
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,7,pick up the black bowl on the stove and place it on the plate,0,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,7,pick up the black bowl on the stove and place it on the plate,1,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,7,pick up the black bowl on the stove and place it on the plate,2,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,8,pick up the black bowl next to the plate and place it on the plate,0,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,8,pick up the black bowl next to the plate and place it on the plate,1,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,8,pick up the black bowl next to the plate and place it on the plate,2,no_movement,220,0.01107,0.754941
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,9,pick up the black bowl on the wooden cabinet and place it on the plate,0,no_movement,220,0.004246,0.004246
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,9,pick up the black bowl on the wooden cabinet and place it on the plate,1,no_movement,220,0.008037,0.838198
+openvla-7b+libero_spatial_no_noops+b16+lr-0.0005+lora-r16+dropout-0.0--image_aug,libero_spatial,9,pick up the black bowl on the wooden cabinet and place it on the plate,2,no_movement,220,0.004246,0.004246

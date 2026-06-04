@@ -1,0 +1,8 @@
+checkpoint,task_suite,task_id,task_description,episode_idx,failure_type,num_steps,mean_action_norm,max_action_norm
+openvla-7b-finetuned-libero-spatial,libero_spatial,4,pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate,1,place_failure,220,0.830496,1.208147
+openvla-7b-finetuned-libero-spatial,libero_spatial,4,pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate,2,place_failure,220,0.639494,1.054582
+openvla-7b-finetuned-libero-spatial,libero_spatial,5,pick up the black bowl on the ramekin and place it on the plate,0,place_failure,220,0.507212,1.199245
+openvla-7b-finetuned-libero-spatial,libero_spatial,5,pick up the black bowl on the ramekin and place it on the plate,1,place_failure,220,0.479104,1.201459
+openvla-7b-finetuned-libero-spatial,libero_spatial,6,pick up the black bowl next to the cookie box and place it on the plate,0,place_failure,220,0.409492,1.103254
+openvla-7b-finetuned-libero-spatial,libero_spatial,7,pick up the black bowl on the stove and place it on the plate,0,place_failure,220,0.47015,1.201772
+openvla-7b-finetuned-libero-spatial,libero_spatial,8,pick up the black bowl next to the plate and place it on the plate,2,place_failure,220,0.463756,1.132173

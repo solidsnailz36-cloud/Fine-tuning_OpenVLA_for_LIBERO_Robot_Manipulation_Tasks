@@ -1,0 +1,31 @@
+checkpoint,task_suite,task_id,task_description,episode_idx,success,num_steps,first_action_timestep,first_gripper_close_timestep,mean_action_norm,max_action_norm
+openvla-7b-finetuned-libero-spatial,libero_spatial,0,pick up the black bowl between the plate and the ramekin and place it on the plate,0,True,82,0,0,0.815671,1.272455
+openvla-7b-finetuned-libero-spatial,libero_spatial,0,pick up the black bowl between the plate and the ramekin and place it on the plate,1,True,128,0,0,0.527601,1.275104
+openvla-7b-finetuned-libero-spatial,libero_spatial,0,pick up the black bowl between the plate and the ramekin and place it on the plate,2,True,102,6,0,0.763603,1.205237
+openvla-7b-finetuned-libero-spatial,libero_spatial,1,pick up the black bowl next to the ramekin and place it on the plate,0,True,111,0,0,0.813781,1.112967
+openvla-7b-finetuned-libero-spatial,libero_spatial,1,pick up the black bowl next to the ramekin and place it on the plate,1,True,93,0,0,0.789736,1.107483
+openvla-7b-finetuned-libero-spatial,libero_spatial,1,pick up the black bowl next to the ramekin and place it on the plate,2,True,132,0,0,0.70142,1.204435
+openvla-7b-finetuned-libero-spatial,libero_spatial,2,pick up the black bowl from table center and place it on the plate,0,True,190,0,0,0.390602,1.117882
+openvla-7b-finetuned-libero-spatial,libero_spatial,2,pick up the black bowl from table center and place it on the plate,1,True,132,0,0,0.590592,1.094429
+openvla-7b-finetuned-libero-spatial,libero_spatial,2,pick up the black bowl from table center and place it on the plate,2,True,97,0,0,0.698753,1.14471
+openvla-7b-finetuned-libero-spatial,libero_spatial,3,pick up the black bowl on the cookie box and place it on the plate,0,True,79,0,0,0.870548,1.150136
+openvla-7b-finetuned-libero-spatial,libero_spatial,3,pick up the black bowl on the cookie box and place it on the plate,1,True,104,0,0,0.684242,1.166903
+openvla-7b-finetuned-libero-spatial,libero_spatial,3,pick up the black bowl on the cookie box and place it on the plate,2,True,84,0,0,0.838582,1.150274
+openvla-7b-finetuned-libero-spatial,libero_spatial,4,pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate,0,True,133,0,0,0.812155,1.171012
+openvla-7b-finetuned-libero-spatial,libero_spatial,4,pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate,1,False,220,0,0,0.830496,1.208147
+openvla-7b-finetuned-libero-spatial,libero_spatial,4,pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate,2,False,220,0,0,0.639494,1.054582
+openvla-7b-finetuned-libero-spatial,libero_spatial,5,pick up the black bowl on the ramekin and place it on the plate,0,False,220,0,0,0.507212,1.199245
+openvla-7b-finetuned-libero-spatial,libero_spatial,5,pick up the black bowl on the ramekin and place it on the plate,1,False,220,0,0,0.479104,1.201459
+openvla-7b-finetuned-libero-spatial,libero_spatial,5,pick up the black bowl on the ramekin and place it on the plate,2,True,82,0,0,0.843432,1.19528
+openvla-7b-finetuned-libero-spatial,libero_spatial,6,pick up the black bowl next to the cookie box and place it on the plate,0,False,220,0,0,0.409492,1.103254
+openvla-7b-finetuned-libero-spatial,libero_spatial,6,pick up the black bowl next to the cookie box and place it on the plate,1,True,102,0,0,0.769777,1.064453
+openvla-7b-finetuned-libero-spatial,libero_spatial,6,pick up the black bowl next to the cookie box and place it on the plate,2,True,94,0,0,0.780453,1.060181
+openvla-7b-finetuned-libero-spatial,libero_spatial,7,pick up the black bowl on the stove and place it on the plate,0,False,220,0,0,0.47015,1.201772
+openvla-7b-finetuned-libero-spatial,libero_spatial,7,pick up the black bowl on the stove and place it on the plate,1,True,112,0,0,0.710671,1.335539
+openvla-7b-finetuned-libero-spatial,libero_spatial,7,pick up the black bowl on the stove and place it on the plate,2,True,137,0,0,0.599163,1.186844
+openvla-7b-finetuned-libero-spatial,libero_spatial,8,pick up the black bowl next to the plate and place it on the plate,0,True,122,0,0,0.661502,1.17324
+openvla-7b-finetuned-libero-spatial,libero_spatial,8,pick up the black bowl next to the plate and place it on the plate,1,True,89,0,0,0.817842,1.204966
+openvla-7b-finetuned-libero-spatial,libero_spatial,8,pick up the black bowl next to the plate and place it on the plate,2,False,220,0,0,0.463756,1.132173
+openvla-7b-finetuned-libero-spatial,libero_spatial,9,pick up the black bowl on the wooden cabinet and place it on the plate,0,True,116,0,0,0.905282,1.326707
+openvla-7b-finetuned-libero-spatial,libero_spatial,9,pick up the black bowl on the wooden cabinet and place it on the plate,1,True,147,0,0,0.769094,1.268995
+openvla-7b-finetuned-libero-spatial,libero_spatial,9,pick up the black bowl on the wooden cabinet and place it on the plate,2,True,131,8,0,0.785839,1.282784
