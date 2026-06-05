@@ -38,13 +38,14 @@ Main components used in this project include:
 The project directory is organized as follows:
 
 ```text
-123/
+Fine-tuning OpenVLA for LIBERO Robot Manipulation Tasks/
 ├── openvla/                 # OpenVLA-related source code
 ├── LIBERO/                  # LIBERO benchmark and simulation environment
 ├── requirements.txt         # Python dependencies
 ├── environment.yml          # Conda environment configuration
 ├── README.md                # Project documentation
 └── ...
+```
 Installation
 1. Clone the Repository
 bash
