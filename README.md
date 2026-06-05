@@ -48,16 +48,16 @@ Fine-tuning OpenVLA for LIBERO Robot Manipulation Tasks/
 ```
 Installation
 1. Clone the Repository
-bash
-复制代码
+```text
 git clone https://github.com/solidsnailz36-cloud/123.git
 cd 123
+```
 Or use SSH:
 
-bash
-复制代码
+```
 git clone git@github.com:solidsnailz36-cloud/123.git
 cd 123
+```
 2. Create a Conda Environment
 It is recommended to use Python 3.10.
 
