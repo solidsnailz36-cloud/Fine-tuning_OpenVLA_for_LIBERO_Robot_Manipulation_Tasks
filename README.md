@@ -1,253 +1,161 @@
 #  Fine-tuning OpenVLA for LIBERO Robot Manipulation Tasks
 
-This repository contains code and configuration files for experiments based on **OpenVLA** and **LIBERO**.  
-The project focuses on vision-language-action modeling, robot manipulation tasks, and evaluation in simulated benchmark environments.
+This repository enables fine-tuning of **OpenVLA** (Vision-Language-Action) models on **LIBERO** robot manipulation tasks, with comprehensive tools for model training and detailed rollout evaluation.
 
----
+## Quick Start
 
-## Project Overview
+### 1. Setup Environment
 
-Vision-Language-Action models aim to map visual observations and language instructions into executable robot actions.  
-This project uses OpenVLA as the policy model and LIBERO as the benchmark environment for robot manipulation experiments.
-
-The repository includes:
-
-- OpenVLA-related code
-- LIBERO benchmark integration
-- Experiment scripts
-- Configuration files
-- Environment setup files
-- Utilities for training, evaluation, and analysis
-
-Main components used in this project include:
-
-- `OpenVLA`
-- `LIBERO`
-- `PyTorch`
-- `Transformers`
-- `PEFT`
-- `robosuite`
-- `MuJoCo`
-- `TensorFlow`
-- `Weights & Biases`
-
----
-
-## Repository Structure
-
-The project directory is organized as follows:
-
-```text
-Fine-tuning OpenVLA for LIBERO Robot Manipulation Tasks/
-├── openvla/                 # OpenVLA-related source code
-├── LIBERO/                  # LIBERO benchmark and simulation environment
-├── requirements.txt         # Python dependencies
-├── environment.yml          # Conda environment configuration
-├── README.md                # Project documentation
-└── ...
-```
-Installation
-1. Clone the Repository
-```text
-git clone https://github.com/solidsnailz36-cloud/123.git
-cd 123
-```
-Or use SSH:
-
-```
-git clone git@github.com:solidsnailz36-cloud/123.git
-cd 123
-```
-2. Create a Conda Environment
-It is recommended to use Python 3.10.
-
-```
+```bash
+# Create conda environment (Python 3.10 recommended)
 conda create -n openvla-libero python=3.10 -y
 conda activate openvla-libero
-```
 
-3. Install PyTorch
-For CPU-only environments:
-
-```
-pip install torch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0 --index-url https://download.pytorch.org/whl/cpu
-```
-For GPU environments, please install the PyTorch version that matches your CUDA version:
-
-```
-https://pytorch.org/get-started/locally/
-```
-4. Install Dependencies
-```
+# Install dependencies
 pip install -r requirements.txt
-```
-Some GPU-related packages, such as flash-attn, bitsandbytes, triton, or CUDA-related packages, may require a compatible NVIDIA GPU and CUDA environment.
 
-5. Install Local Packages
-Install the local project modules in editable mode:
-
-```
+# Install local packages
 pip install -e ./LIBERO
 pip install -e ./openvla
 ```
-Dataset Preparation
-This project uses LIBERO benchmark tasks for robot manipulation experiments.
 
-Please make sure that the LIBERO environment and required datasets are correctly prepared before training or evaluation.
+**Dependencies**: PyTorch, Transformers, PEFT, robosuite, MuJoCo, Weights & Biases, and others (see [requirements.txt](requirements.txt) and [environment.yml](environment.yml))
 
-A typical dataset/task structure may include:
+### 2. Download Data
+
+Place the LIBERO dataset in the `datasets/` directory:
+
+```bash
+datasets/
+└── libero_spatial_no_noops/  # Download LIBERO dataset here
+```
+
+Download LIBERO from the official repository if not already present.
+
+### 3. Fine-tune Model
+
+Use the training script to fine-tune OpenVLA on LIBERO tasks:
+
+```bash
+bash openvla/train_libero.sh
+```
+
+This generates:
+- Checkpoints in `datadisk/checkpoints/`
+- LoRA adapters in `datadisk/adapter_tmp/`
+
+See [openvla/train_libero.sh](openvla/train_libero.sh) for configuration details.
+
+### 4. Evaluate Model
+
+Run evaluation with the checkpoint:
+
+```bash
+python openvla/run_libero_eval.py \
+    --checkpoint <path_to_checkpoint> \
+    --output_dir results/
+```
+
+See [openvla/run_libero_eval.py](openvla/run_libero_eval.py) for more options.
+
+## Rollout Analysis & Evaluation Suite ⭐
+
+The most valuable part of this project is the **comprehensive rollout evaluation toolkit** in [scripts/](scripts/). These tools generate detailed assessments and visualizations of model behavior:
+
+### Core Analysis Scripts
+
+| Script | Purpose |
+|--------|---------|
+| [scripts/summarize_results.py](scripts/summarize_results.py) | Aggregate success rates across rollouts; generates summary CSV with checkpoint, task suite, task ID, and success metrics |
+| [scripts/analyze_rollout_actions.py](scripts/analyze_rollout_actions.py) | Extract and analyze action sequences from rollouts; plot action trajectories over time |
+| [scripts/plot_action_traces.py](scripts/plot_action_traces.py) | Visualize action norms and gripper states; generate diagnostic plots for each episode |
+| [scripts/classify_failures.py](scripts/classify_failures.py) | Categorize failure modes; generate failure case analysis with statistics |
+
+### Utility Functions
+
+[scripts/rollout_analysis_utils.py](scripts/rollout_analysis_utils.py) provides helper functions:
+- `episode_record()`: Parse episode metadata and results
+- `action_vector()`, `action_norm()`: Action sequence processing
+- `find_episode_dirs()`: Traverse rollout directory structure
+- `write_csv()`: Format results for analysis
+
+### Workflow Example
+
+```bash
+# 1. Summarize overall success rates
+python scripts/summarize_results.py --log_root experiments/logs/ --output results/summary.csv
+
+# 2. Analyze action traces and generate plots
+python scripts/analyze_rollout_actions.py --log_root experiments/logs/
+
+# 3. Classify and categorize failures
+python scripts/classify_failures.py --log_root experiments/logs/
+
+# 4. Results and visualizations
+ls results/
+```
+
+Results are organized in `results/` with:
+- `failure_cases.csv` - Detailed failure categorization
+- `latency_summary.csv` - Timing and performance metrics  
+- Plots and visualizations for action traces
+
+## Directory Structure
 
 ```
-LIBERO/
-├── libero/
-├── benchmark_scripts/
-├── datasets/
-└── ...
+Fine-tuning_OpenVLA_for_LIBERO_Robot_Manipulation_Tasks/
+├── openvla/                         # OpenVLA training code
+│   ├── train_libero.sh             # Training launcher
+│   └── run_libero_eval.py          # Evaluation script
+├── scripts/                         # Rollout analysis & evaluation tools ⭐
+│   ├── summarize_results.py
+│   ├── analyze_rollout_actions.py
+│   ├── plot_action_traces.py
+│   ├── classify_failures.py
+│   └── rollout_analysis_utils.py
+├── LIBERO/                          # LIBERO benchmark environment
+├── datadisk/
+│   ├── checkpoints/                 # Model checkpoints
+│   └── adapter_tmp/                 # LoRA adapters
+├── datasets/                        # LIBERO datasets
+├── experiments/                     # Experiment logs & results
+├── results/                         # Analysis results & summaries
+├── rollouts/                        # Rollout recordings by date
+├── requirements.txt                 # Python dependencies
+├── environment.yml                  # Conda environment config
+└── README.md
 ```
-Depending on the experiment setting, the project may use different LIBERO task suites, such as:
 
-LIBERO-Spatial
-LIBERO-Object
-LIBERO-Goal
-LIBERO-Long
-Please refer to the LIBERO documentation for detailed dataset preparation instructions.
+## Model Weights & Checkpoints
 
-Training
-Training scripts and configurations depend on the specific experiment setting.
+- Model checkpoints are stored in `datadisk/checkpoints/` (not included in repo)
+- LoRA adapters in `datadisk/adapter_tmp/` can be preserved:
+  - `adapter_model.safetensors`
+  - `adapter_config.json`
+- Base models from Hugging Face can be re-downloaded as needed
+- For large file storage, consider Hugging Face Hub, Google Drive, or Git LFS
 
-A typical training command may look like:
+## Notes
 
-```
-python train.py \
-    --config configs/train_config.yaml
-```
-Or, for fine-tuning an OpenVLA-based model:
+- **GPU recommended** for training and evaluation
+- **CPU suitable** for code inspection, lightweight debugging, and result analysis
+- Acceleration packages (flash-attn, bitsandbytes) require compatible CUDA setup
+- Large raw datasets not included in repository
 
-```
-python openvla/train.py \
-    --model_name_or_path <base_model_path_or_hf_name> \
-    --data_root <dataset_path> \
-    --output_dir <output_path>
-```
-If LoRA / PEFT fine-tuning is used, the training process may generate adapter weights such as:
+## Citation
 
-```
-adapter_model.safetensors
-adapter_config.json
-```
-These files should be preserved if the fine-tuned model is needed for later evaluation or inference.
-
-Evaluation
-Evaluation can be performed using LIBERO benchmark environments.
-
-A typical evaluation command may look like:
-
-```
-python evaluate.py \
-    --config configs/eval_config.yaml \
-    --checkpoint <model_or_adapter_path>
-```
-During evaluation, the model receives visual observations and language instructions, then predicts robot actions to complete manipulation tasks.
-
-Common evaluation metrics include:
-
-Task success rate
-Average success rate across task suites
-Episode completion rate
-Qualitative behavior analysis
-Example output:
-
-```
-Task Suite: LIBERO-Spatial
-Number of Tasks: 10
-Average Success Rate: XX.X%
-Model Weights
-```
-Large model weights are not included in this repository by default.
-
-Public base models can usually be downloaded again from official sources such as Hugging Face.
-Fine-tuned models, LoRA adapters, and important checkpoints should be stored separately if needed.
-
-Recommended files to preserve:
-
-```
-adapter_model.safetensors
-adapter_config.json
-config.json
-training_args.json
-evaluation_results.json
-```
-Large files such as full model checkpoints or intermediate training states are not recommended to be uploaded directly to a standard GitHub repository.
-
-For storing large checkpoints, consider using:
-
-Hugging Face Hub
-Google Drive
-Cloud storage
-Git LFS
-Other external storage services
-Results
-Experimental results can be organized in the following format:
-
-```
-results/
-├── libero_spatial/
-├── libero_object/
-├── libero_goal/
-├── libero_long/
-└── ...
-```
-Example result table:
-
-Benchmark Suite	Number of Tasks	Success Rate
-LIBERO-Spatial	TBD	TBD
-LIBERO-Object	TBD	TBD
-LIBERO-Goal	TBD	TBD
-LIBERO-Long	TBD	TBD
-Qualitative rollout videos or visualizations can also be saved for analysis.
-
-Notes
-A GPU is recommended for model training and large-scale evaluation.
-CPU-only environments are mainly suitable for code inspection, lightweight debugging, and result analysis.
-Some acceleration libraries may require specific CUDA, PyTorch, and compiler versions.
-Large model weights and datasets are not included in this repository.
-Citation
-If you use OpenVLA, LIBERO, or related components in your work, please cite the corresponding papers and repositories.
-
-Example citation format:
-
-```
+```bibtex
 @misc{openvla,
-  title        = {OpenVLA},
-  author       = {OpenVLA Authors},
-  year         = {2024},
-  howpublished = {\url{https://github.com/openvla/openvla}}
+  title={OpenVLA},
+  author={OpenVLA Authors},
+  year={2024},
+  howpublished={\url{https://github.com/openvla/openvla}}
 }
-```
-```
+
 @misc{libero,
-  title        = {LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning},
-  author       = {LIBERO Authors},
-  year         = {2023},
-  howpublished = {\url{https://github.com/Lifelong-Robot-Learning/LIBERO}}
+  title={LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning},
+  author={LIBERO Authors},
+  year={2023},
+  howpublished={\url{https://github.com/Lifelong-Robot-Learning/LIBERO}}
 }
 ```
-Please replace the above entries with the official BibTeX citations if used in a paper or formal report.
-
-Acknowledgements
-This project builds upon the following open-source projects and libraries:
-
-OpenVLA
-LIBERO
-Hugging Face Transformers
-PyTorch
-PEFT
-robosuite
-MuJoCo
-Weights & Biases
-We thank the authors and contributors of these projects for making their code and resources publicly available.
-
-License
-Please refer to the licenses of the original OpenVLA, LIBERO, and other third-party components used in this project.
-
-If this repository includes modified code from external projects, their original licenses should be respected.
