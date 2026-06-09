@@ -62,14 +62,31 @@ See [openvla/run_libero_eval.py](openvla/run_libero_eval.py) for more options.
 
 The most valuable part of this project is the **comprehensive rollout evaluation toolkit** in [scripts/](scripts/). These tools generate detailed assessments and visualizations of model behavior:
 
+### Quick Start: One-Command Analysis
+
+```bash
+# Run all analysis scripts sequentially
+bash run_all_analysis.sh experiments/logs/EVAL-libero_spatial-openvla-XXXX
+```
+
+[run_all_analysis.sh](run_all_analysis.sh) orchestrates the full analysis pipeline, creating a timestamped results directory with all outputs organized in one place.
+
 ### Core Analysis Scripts
 
-| Script | Purpose |
-|--------|---------|
-| [scripts/summarize_results.py](scripts/summarize_results.py) | Aggregate success rates across rollouts; generates summary CSV with checkpoint, task suite, task ID, and success metrics |
-| [scripts/analyze_rollout_actions.py](scripts/analyze_rollout_actions.py) | Extract and analyze action sequences from rollouts; plot action trajectories over time |
-| [scripts/plot_action_traces.py](scripts/plot_action_traces.py) | Visualize action norms and gripper states; generate diagnostic plots for each episode |
-| [scripts/classify_failures.py](scripts/classify_failures.py) | Categorize failure modes; generate failure case analysis with statistics |
+| Script | Purpose | Output |
+|--------|---------|--------|
+| [scripts/summarize_results.py](scripts/summarize_results.py) | Aggregate success rates by checkpoint, task, and overall | `results_summary.csv` |
+| [scripts/analyze_rollout_actions.py](scripts/analyze_rollout_actions.py) | Extract action sequences, compute statistics | `latency_summary.csv` |
+| [scripts/plot_action_traces.py](scripts/plot_action_traces.py) | Visualize action norms and gripper states | Diagnostic plots per episode |
+| [scripts/classify_failures.py](scripts/classify_failures.py) | Categorize failure modes (no movement, grasp failure, etc.) | `failure_cases.csv` |
+
+### Reference Files
+
+- **[summary_expanded.csv](summary_expanded.csv)** - Master experiment log tracking all evaluated checkpoints with:
+  - Model and training configuration
+  - Per-task success rates across all 10 LIBERO-Spatial tasks
+  - Overall success rate, horizon settings, and checkpoint paths
+  - Useful as a reference for comparing checkpoint performance across different training configurations
 
 ### Utility Functions
 
@@ -82,23 +99,32 @@ The most valuable part of this project is the **comprehensive rollout evaluation
 ### Workflow Example
 
 ```bash
-# 1. Summarize overall success rates
-python scripts/summarize_results.py --log_root experiments/logs/ --output results/summary.csv
+# Single command to run all analyses
+bash run_all_analysis.sh experiments/logs/EVAL-libero_spatial-openvla-2026_06_04-09_55_28
 
-# 2. Analyze action traces and generate plots
-python scripts/analyze_rollout_actions.py --log_root experiments/logs/
-
-# 3. Classify and categorize failures
-python scripts/classify_failures.py --log_root experiments/logs/
-
-# 4. Results and visualizations
-ls results/
+# Or run individual scripts
+python scripts/summarize_results.py --log_root experiments/logs/EVAL-xxx --output results/summary.csv
+python scripts/analyze_rollout_actions.py --log_root experiments/logs/EVAL-xxx --output results/latency.csv
+python scripts/classify_failures.py --log_root experiments/logs/EVAL-xxx --output results/failures.csv
+python scripts/plot_action_traces.py --log_root experiments/logs/EVAL-xxx --output_dir results/plots/
 ```
 
-Results are organized in `results/` with:
+All results saved to timestamped directory (e.g., `results/run_2026_06_04-20_06_40/`) with:
+- `results_summary.csv` - Success rate statistics
+- `latency_summary.csv` - Action timing analysis
 - `failure_cases.csv` - Detailed failure categorization
-- `latency_summary.csv` - Timing and performance metrics  
-- Plots and visualizations for action traces
+- `combined_action_gripper_plots/` - Diagnostic visualizations
+
+### Analysis Report
+
+See [reports/openvla_libero_spatial_analysis.md](reports/openvla_libero_spatial_analysis.md) for a comprehensive evaluation report that includes:
+- Checkpoint performance comparison (base model, official fine-tuned, self-trained)
+- Failure mode decomposition with actionable diagnostics
+- Key insight: **delayed action startup** as a primary bottleneck
+- How rollout action traces enable policy diagnosis beyond success rate
+- Experimental findings and future research directions
+
+This report demonstrates the value of per-episode action-level diagnostics for understanding why robot policies fail and guiding iterative improvements.
 
 ## Directory Structure
 
