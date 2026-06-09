@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-LOG_ROOT=${1:-"openvla/experiments/logs/EVAL-libero_spatial-openvla-2026_06_04-17_12_40--official_ft_libero_spatial_horizon_1x"}
+LOG_ROOT=${1:-"experiments/logs/EVAL-libero_spatial-openvla-2026_06_04-17_12_40--official_ft_libero_spatial_horizon_1x"}
 
 RUN_DIR="results/run_$(date +"%Y_%m_%d-%H_%M_%S")"
 mkdir -p "$RUN_DIR"
